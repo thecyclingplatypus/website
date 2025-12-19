@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cycling Platypus</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-black text-red-500 font-pixel opacity-0 animate-fadeIn relative"> 
+    <img src="assets/platypus.png" id="platypus-animation" class="platypus" alt="Cycling Platypus Animation">
+
+    <!-- Header -->
+    <header class="container mx-auto px-4 py-8">
+        <nav class="flex justify-between items-center">
+            <div class="flex-1">
+                <a href="#" class="px-4 hover:text-white">Home</a>
+                <a href="#films" class="px-4 hover:text-white">Films</a>
+                <a href="#contact" class="px-4 hover:text-white">Contact</a>
+            </div>
+            <div class="flex-1 text-center">
+                <img src="assets/logo.png" alt="Cycling Platypus Logo" class="h-16 mx-auto">
+            </div>
+                        <div class="flex-1 flex justify-end items-center">
+                <a href="https://www.instagram.com/thecyclingplatypus?igsh=MWtyOWpqZ3dpcGlodg==" target="_blank" class="hover:text-white">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-instagram"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                </a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Video Section -->
+    <section id="hero-video" class="w-full h-screen-half relative overflow-hidden">
+        <video
+            class="absolute top-1/2 left-1/2 w-full h-auto min-w-full min-h-full -translate-x-1/2 -translate-y-1/2 object-cover"
+            src="assets/showreel small.mp4"
+            autoplay
+            loop
+            muted
+            playsinline
+        ></video>
+    </section>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4">
+        <!-- Films Section -->
+        <section id="films" class="py-16">
+            <!-- Row 1: Brand Films -->
+            <div class="film-row">
+                <h3 class="film-category-title">Brand Films</h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="film-item text-center"><a href="video.html?v=dQw4w9WgXcQ" class="thumbnail-link"><img src="https://i.imgur.com/As8A92y.png" alt="Film Thumbnail" class="thumbnail"></a><div class="film-caption"><p>ANATOMY OF THE ARTIST BRAIN</p></div></div>
+                    <div class="film-item text-center"><a href="video.html?v=dQw4w9WgXcQ" class="thumbnail-link"><img src="https://i.imgur.com/lWf2A5V.png" alt="Film Thumbnail" class="thumbnail"></a><div class="film-caption"><p>ALL ARTISTS ARE THIEVES</p></div></div>
+                    <div class="film-item text-center"><a href="video.html?v=dQw4w9WgXcQ" class="thumbnail-link"><img src="https://i.imgur.com/jM3p2aG.png" alt="Film Thumbnail" class="thumbnail"></a><div class="film-caption"><p>THE MONEY TRANSFER</p></div></div>
+                </div>
+            </div>
+
+            <!-- Row 2: Short Films -->
+            <div class="film-row">
+                <h3 class="film-category-title">Short Films</h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="film-item text-center"><a href="video.html?v=dQw4w9WgXcQ" class="thumbnail-link"><img src="https://i.imgur.com/kHce3tJ.png" alt="Film Thumbnail" class="thumbnail"></a><div class="film-caption"><p>TDE</p></div></div>
+                    <div class="film-item text-center"><a href="video.html?v=dQw4w9WgXcQ" class="thumbnail-link"><img src="https://i.imgur.com/5wL3s8Z.png" alt="Film Thumbnail" class="thumbnail"></a><div class="film-caption"><p>GREEN</p></div></div>
+                    <div class="film-item text-center"><a href="video.html?v=dQw4w9WgXcQ" class="thumbnail-link"><img src="https://i.imgur.com/kHce3tJ.png" alt="Film Thumbnail" class="thumbnail"></a><div class="film-caption"><p>JAPAN</p></div></div>
+                </div>
+            </div>
+
+            <!-- Row 3: Music Videos -->
+            <div class="film-row">
+                <h3 class="film-category-title">Music Videos</h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="film-item text-center"><a href="video.html?v=dQw4w9WgXcQ" class="thumbnail-link"><img src="https://i.imgur.com/As8A92y.png" alt="Film Thumbnail" class="thumbnail"></a><div class="film-caption"><p>FILM TITLE 7</p></div></div>
+                    <div class="film-item text-center"><a href="video.html?v=dQw4w9WgXcQ" class="thumbnail-link"><img src="https://i.imgur.com/lWf2A5V.png" alt="Film Thumbnail" class="thumbnail"></a><div class="film-caption"><p>FILM TITLE 8</p></div></div>
+                    <div class="film-item text-center"><a href="video.html?v=dQw4w9WgXcQ" class="thumbnail-link"><img src="https://i.imgur.com/jM3p2aG.png" alt="Film Thumbnail" class="thumbnail"></a><div class="film-caption"><p>FILM TITLE 9</p></div></div>
+                </div>
+            </div>
+
+            <!-- Row 4: Photography -->
+            <div class="film-row">
+                <h3 class="film-category-title">Photography</h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="film-item text-center"><a href="video.html?v=dQw4w9WgXcQ" class="thumbnail-link"><img src="https://i.imgur.com/kHce3tJ.png" alt="Film Thumbnail" class="thumbnail"></a><div class="film-caption"><p>FILM TITLE 10</p></div></div>
+                    <div class="film-item text-center"><a href="video.html?v=dQw4w9WgXcQ" class="thumbnail-link"><img src="https://i.imgur.com/5wL3s8Z.png" alt="Film Thumbnail" class="thumbnail"></a><div class="film-caption"><p>FILM TITLE 11</p></div></div>
+                    <div class="film-item text-center"><a href="video.html?v=dQw4w9WgXcQ" class="thumbnail-link"><img src="https://i.imgur.com/As8A92y.png" alt="Film Thumbnail" class="thumbnail"></a><div class="film-caption"><p>FILM TITLE 12</p></div></div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer id="contact" class="text-center py-16">
+        <p class="mb-8">// Your quote here</p>
+        <p>All films, written and directed by <span class="text-glow">The CyclingPlatypus</span></p>
+        <p class="mt-4">Contact: thecyclingplatypus@gmail.com</p>
+    </footer>
+
+    <!-- Showreel Section -->
+    <section id="showreel" class="w-full bg-black py-8 flex justify-center">
+        <video
+            class="w-full max-w-5xl border border-red-500"
+            src="assets/showreel small.mp4"
+            autoplay
+            loop
+            muted
+            playsinline
+            controls
+        ></video>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html>

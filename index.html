@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cycling Platypus</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400;700&family=Marcellus&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="assets/logo.png">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-black text-red-500 font-pixel opacity-0 animate-fadeIn relative"> 
+    <div id="page-preloader" class="is-active">
+        <div class="page-preloader-inner">
+            <img src="assets/platypus.png" alt="Cycling Platypus loading" class="page-preloader-platypus">
+            <div class="page-preloader-text">Loading</div>
+        </div>
+    </div>
+    <img src="assets/gif.gif" id="platypus-animation" class="platypus" alt="Cycling Platypus Animation">
+
+    <!-- Header -->
+    <header class="container mx-auto px-4 py-8">
+        <nav class="flex justify-between items-center">
+            <div class="flex-1">
+                <a href="#work" class="px-4 hover:text-white">Work</a>
+                <a href="#contact" class="px-4 hover:text-white">Contact</a>
+            </div>
+            <div class="flex-1 text-center">
+                <img src="assets/logo.png" alt="Cycling Platypus Logo" class="h-24 mx-auto site-logo">
+            </div>
+                        <div class="flex-1 flex justify-end items-center">
+                <a href="https://www.instagram.com/thecyclingplatypus?igsh=MWtyOWpqZ3dpcGlodg==" target="_blank" class="hover:text-white">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-instagram"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                </a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Video Section -->
+    <section id="hero-video" class="w-full h-screen-half relative overflow-hidden">
+        <video
+            id="hero-video-element"
+            class="absolute top-1/2 left-1/2 w-full h-auto min-w-full min-h-full -translate-x-1/2 -translate-y-1/2 object-cover"
+            src="assets/showreel small.mp4"
+            autoplay
+            loop
+            muted
+            playsinline>
+        </video>
+        <button id="hero-video-toggle" class="hero-video-toggle">Pause</button>
+    </section>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4">
+        <!-- Work Section -->
+        <section id="work" class="py-16">
+            <!-- Row 1: Brand Films -->
+            <div class="film-row">
+                <h3 class="film-category-title">Brand Films</h3>
+                <div class="film-row-slider">
+                    <button class="slider-arrow slider-arrow-left" aria-label="Previous Brand Films">&#10094;</button>
+                    <div class="film-row-track">
+                        <div class="film-item text-center"><a href="video.html?v=4SkoB1a7_QQ&amp;title=Google%20Ad%20-%20Behind%20the%20Scenes" class="thumbnail-link"><img src="https://img.youtube.com/vi/4SkoB1a7_QQ/maxresdefault.jpg" alt="Google Ad - Behind the Scenes" class="thumbnail"></a><div class="film-caption"><p>Google Ad - Behind the Scenes</p></div></div>
+                        <div class="film-item text-center"><a href="video.html?v=BnxTo5zSenc&amp;title=Hattke%20Food%20(New%20Launch%20Commercial)" class="thumbnail-link"><img src="https://img.youtube.com/vi/BnxTo5zSenc/maxresdefault.jpg" alt="Hattke Food (New Launch Commercial)" class="thumbnail"></a><div class="film-caption"><p>Hattke Food<br><span class="caption-sub">New Launch Commercial</span></p></div></div>
+                        <div class="film-item text-center"><a href="video.html?v=B8Ukl618SSI&amp;title=Spotify%20-%20Behind%20the%20Scenes" class="thumbnail-link"><img src="https://img.youtube.com/vi/B8Ukl618SSI/maxresdefault.jpg" alt="Spotify - Behind the Scenes" class="thumbnail"></a><div class="film-caption"><p>Spotify - Behind the Scenes</p></div></div>
+                        <div class="film-item text-center"><a href="video.html?v=1V8awvvflyU&amp;title=Charles%20%26%20Keith%20(Spring%20Campaign)" class="thumbnail-link"><img src="https://img.youtube.com/vi/1V8awvvflyU/maxresdefault.jpg" alt="Charles &amp; Keith (Spring Campaign)" class="thumbnail"></a><div class="film-caption"><p>Charles &amp; Keith<br><span class="caption-sub">Spring Campaign</span></p></div></div>
+                        <div class="film-item text-center"><a href="video.html?v=SZqlZ3ROP3s&amp;title=Spotify%20(BTS)%20ft.%20Boman%20Irani" class="thumbnail-link"><img src="https://img.youtube.com/vi/SZqlZ3ROP3s/maxresdefault.jpg" alt="Spotify (BTS) ft. Boman Irani" class="thumbnail"></a><div class="film-caption"><p>Spotify (BTS)<br><span class="caption-sub">ft. Boman Irani</span></p></div></div>
+                        <div class="film-item text-center"><a href="video.html?v=utSLOMNFJAc&amp;title=ERBE%20Studio%20(Opening%20Film)" class="thumbnail-link"><img src="https://img.youtube.com/vi/utSLOMNFJAc/maxresdefault.jpg" alt="ERBE Studio (Opening Film)" class="thumbnail"></a><div class="film-caption"><p>ERBE Studio<br><span class="caption-sub">Opening Film</span></p></div></div>
+                        <div class="film-item text-center"><a href="video.html?v=_sKVguEfVGo&amp;title=Fourfigr%20(New%20Launch%20Film)" class="thumbnail-link"><img src="https://img.youtube.com/vi/_sKVguEfVGo/maxresdefault.jpg" alt="Fourfigr (New Launch Film)" class="thumbnail"></a><div class="film-caption"><p>Fourfigr<br><span class="caption-sub">New Launch Film</span></p></div></div>
+                        <div class="film-item text-center"><a href="video.html?v=G80pn-vjoYQ&amp;title=ERBE%20Studio%20(ASMR%20Film)" class="thumbnail-link"><img src="https://img.youtube.com/vi/G80pn-vjoYQ/maxresdefault.jpg" alt="ERBE Studio (ASMR Film)" class="thumbnail"></a><div class="film-caption"><p>ERBE Studio<br><span class="caption-sub">(ASMR Film)</span></p></div></div>
+                    </div>
+                    <button class="slider-arrow slider-arrow-right" aria-label="Next Brand Films">&#10095;</button>
+                </div>
+            </div>
+
+            <!-- Row 2: Short Films -->
+            <div class="film-row">
+                <h3 class="film-category-title">Short Films</h3>
+                <div class="film-row-slider">
+                    <button class="slider-arrow slider-arrow-left" aria-label="Previous Short Films">&#10094;</button>
+                    <div class="film-row-track">
+                        <div class="film-item text-center"><a href="video.html?v=NSF8LbZScAQ&amp;title=The%20Hands%20of%20Leviathan%20-%20An%20Experimental%20Short%20Film" class="thumbnail-link"><img src="https://img.youtube.com/vi/NSF8LbZScAQ/maxresdefault.jpg" alt="The Hands of Leviathan - An Experimental Short Film" class="thumbnail"></a><div class="film-caption"><p>The Hands of Leviathan<br><span class="caption-sub">Experimental Short Film</span></p></div></div>
+                        <div class="film-item text-center"><a href="video.html?v=CCFbrd5SBK8&amp;title=Anti%20Literature%20(Experimental%20Short%20Film)" class="thumbnail-link"><img src="https://img.youtube.com/vi/CCFbrd5SBK8/maxresdefault.jpg" alt="Anti Literature (Experimental Short Film)" class="thumbnail"></a><div class="film-caption"><p>Anti Literature<br><span class="caption-sub">Experimental Short Film</span></p></div></div>
+                        <div class="film-item text-center"><a href="video.html?v=Czf4TMDl_lA&amp;title=Beauty%20of%20Tiruvannamalai%20(Cinematic%20Short%20Film)" class="thumbnail-link"><img src="https://img.youtube.com/vi/Czf4TMDl_lA/maxresdefault.jpg" alt="Beauty of Tiruvannamalai (Cinematic Short Film)" class="thumbnail"></a><div class="film-caption"><p>Beauty of Tiruvannamalai<br><span class="caption-sub">Cinematic Short Film</span></p></div></div>
+                        <div class="film-item text-center"><a href="video.html?v=fu9AIWiGAF4&amp;title=Demon%27s%20Unconsciousness%20(Experimental%20Short%20Film)" class="thumbnail-link"><img src="https://img.youtube.com/vi/fu9AIWiGAF4/maxresdefault.jpg" alt="Demon's Unconsciousness (Experimental Short Film)" class="thumbnail"></a><div class="film-caption"><p>Demon's Unconsciousness<br><span class="caption-sub">Experimental Short Film</span></p></div></div>
+                        <div class="film-item text-center"><a href="video.html?v=4MNF7M8aPVI&amp;title=The%20Greatest%20Movie%20of%20All%20Time%20(Experimental%20Short%20Film)" class="thumbnail-link"><img src="https://img.youtube.com/vi/4MNF7M8aPVI/maxresdefault.jpg" alt="The Greatest Movie of All Time (Experimental Short Film)" class="thumbnail"></a><div class="film-caption"><p>The Greatest Movie of All Time<br><span class="caption-sub">Experimental Short Film</span></p></div></div>
+                    </div>
+                    <button class="slider-arrow slider-arrow-right" aria-label="Next Short Films">&#10095;</button>
+                </div>
+            </div>
+
+            <!-- Row 3: Music Videos/Aftermovies -->
+            <div class="film-row">
+                <h3 class="film-category-title">Music Videos/Aftermovies</h3>
+                <div class="film-row-slider">
+                    <button class="slider-arrow slider-arrow-left" aria-label="Previous Music Videos">&#10094;</button>
+                    <div class="film-row-track">
+                        <div class="film-item text-center"><a href="video.html?v=gvwcvpDzijg&amp;title=Raahey%20MV" class="thumbnail-link"><img src="https://img.youtube.com/vi/gvwcvpDzijg/maxresdefault.jpg" alt="Raahey MV" class="thumbnail"></a><div class="film-caption"><p>Raahey MV</p></div></div>
+                        <div class="film-item text-center"><a href="video.html?v=cGbV-a_JmEk&amp;title=HUNGAMA%20MV" class="thumbnail-link"><img src="https://img.youtube.com/vi/cGbV-a_JmEk/maxresdefault.jpg" alt="HUNGAMA MV" class="thumbnail"></a><div class="film-caption"><p>HUNGAMA MV</p></div></div>
+                        <div class="film-item text-center"><a href="video.html?v=m8-ssNj8czg&amp;title=Kampai%20Music%20(Cinematic%20Aftermovie)" class="thumbnail-link"><img src="https://img.youtube.com/vi/m8-ssNj8czg/0.jpg" alt="Kampai Music (Cinematic Aftermovie)" class="thumbnail"></a><div class="film-caption"><p>Kampai Music<br><span class="caption-sub">Cinematic Aftermovie</span></p></div></div>
+                        <div class="film-item text-center"><a href="video.html?v=U38lSFbQACg&amp;title=Skylights%20Ensemble%20(Cinematic%20Aftermovie)" class="thumbnail-link"><img src="https://img.youtube.com/vi/U38lSFbQACg/maxresdefault.jpg" alt="Skylights Ensemble (Cinematic Aftermovie)" class="thumbnail"></a><div class="film-caption"><p>Skylights Ensemble<br><span class="caption-sub">Cinematic Aftermovie</span></p></div></div>
+                        <div class="film-item text-center"><a href="video.html?v=MSj_TzOaW9c&amp;title=DGTL%202023%20Jagermeister%20(Cinematic%20Aftermovie)" class="thumbnail-link"><img src="https://img.youtube.com/vi/MSj_TzOaW9c/maxresdefault.jpg" alt="DGTL 2023 Jagermeister (Cinematic Aftermovie)" class="thumbnail"></a><div class="film-caption"><p>DGTL 2023 Jagermeister<br><span class="caption-sub">Cinematic Aftermovie</span></p></div></div>
+                    </div>
+                    <button class="slider-arrow slider-arrow-right" aria-label="Next Music Videos">&#10095;</button>
+                </div>
+            </div>
+
+            <!-- Row 4: Photography -->
+            <div class="film-row">
+                <h3 class="film-category-title">Photography</h3>
+                <div class="film-row-slider">
+                    <button class="slider-arrow slider-arrow-left" aria-label="Previous Photography">&#10094;</button>
+                    <div class="film-row-track">
+                        <div class="film-item text-center"><a href="photo-artists.html" class="thumbnail-link"><img src="assets/Artists.jpg" alt="Artists" class="thumbnail"></a><div class="film-caption"><p>Artists</p></div></div>
+                        <div class="film-item text-center"><a href="photo-brand-work.html" class="thumbnail-link"><img src="assets/Brand%20Work.jpg" alt="Brand Work" class="thumbnail"></a><div class="film-caption"><p>Brand Work</p></div></div>
+                        <div class="film-item text-center"><a href="photo-concept-shoots.html" class="thumbnail-link"><img src="assets/Concept%20Shoots.jpg" alt="Concept Shoots" class="thumbnail"></a><div class="film-caption"><p>Concept Shoots</p></div></div>
+                        <div class="film-item text-center"><a href="photo-bts.html" class="thumbnail-link"><img src="assets/Behind%20the%20Scenes%20(On%20Set).jpg" alt="Behind The Scenes" class="thumbnail"></a><div class="film-caption"><p>Behind The Scenes</p></div></div>
+                        <div class="film-item text-center"><a href="photo-studio.html" class="thumbnail-link"><img src="assets/Studio%20Photography.jpg" alt="Studio Photography" class="thumbnail"></a><div class="film-caption"><p>Studio Photography</p></div></div>
+                    </div>
+                    <button class="slider-arrow slider-arrow-right" aria-label="Next Photography">&#10095;</button>
+                </div>
+            </div>
+        </section>
+
+        <p class="all-films-credit">
+            All films, written and directed by <span class="text-glow">The CyclingPlatypus</span>
+        </p>
+        <p class="all-films-contact">Contact: thecyclingplatypus@gmail.com</p>
+    </main>
+
+    <!-- Bottom Scrolling Banner -->
+    <div class="bottom-banner">
+        <div class="bottom-banner-inner">
+            <span class="bottom-banner-text">Art before Algorithms, ALWAYS.&nbsp;&nbsp;</span>
+            <span class="bottom-banner-text">Art before Algorithms, ALWAYS.&nbsp;&nbsp;</span>
+            <span class="bottom-banner-text">Art before Algorithms, ALWAYS.&nbsp;&nbsp;</span>
+            <span class="bottom-banner-text">Art before Algorithms, ALWAYS.&nbsp;&nbsp;</span>
+            <span class="bottom-banner-text">Art before Algorithms, ALWAYS.&nbsp;&nbsp;</span>
+            <span class="bottom-banner-text">Art before Algorithms, ALWAYS.&nbsp;&nbsp;</span>
+            <span class="bottom-banner-text">Art before Algorithms, ALWAYS.&nbsp;&nbsp;</span>
+            <span class="bottom-banner-text">Art before Algorithms, ALWAYS.&nbsp;&nbsp;</span>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer id="contact" class="text-center py-16 footer-area">
+        <p class="footer-quote">
+            &ldquo;I want to stand<br>
+            as close to the edge<br>
+            as I can without<br>
+            going over.<br>
+            Out on the edge,<br>
+            you see all kinds of<br>
+            things you can't see<br>
+            from the centre.&rdquo;<br>
+            <span class="footer-quote-author">~ Kurt Vonnegut</span>
+        </p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

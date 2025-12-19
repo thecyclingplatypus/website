@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cycling Platypus - Photography / Brand Work</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="assets/logo.png">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-black text-red-500 font-pixel min-h-screen flex flex-col items-center p-4">
+
+    <div id="page-preloader" class="is-active">
+        <div class="page-preloader-inner">
+            <img src="assets/platypus.png" alt="Cycling Platypus loading" class="page-preloader-platypus">
+            <div class="page-preloader-text">Loading</div>
+        </div>
+    </div>
+
+    <main class="w-full max-w-6xl">
+        <section class="mb-10 text-center">
+            <h1 class="text-3xl md:text-4xl mb-2">Brand Work</h1>
+        </section>
+
+        <section class="mb-12">
+            <div class="flex flex-wrap justify-center gap-6">
+                <button class="photo-thumb w-full sm:w-[48%] lg:w-[22%]" data-full="assets/Brand Work/BIG ME.png" data-name="Big me 1">
+                    <img src="assets/Brand Work/BIG ME.png" alt="Big me 1" loading="lazy">
+                </button>
+                <button class="photo-thumb w-full sm:w-[48%] lg:w-[22%]" data-full="assets/Brand Work/BIG ME (2).png" data-name="Big me 2">
+                    <img src="assets/Brand Work/BIG ME (2).png" alt="Big me 2" loading="lazy">
+                </button>
+                <button class="photo-thumb w-full sm:w-[48%] lg:w-[22%]" data-full="assets/Brand Work/Coksa 1.jpg" data-name="Coksa 1">
+                    <img src="assets/Brand Work/Coksa 1.jpg" alt="Coksa 1" loading="lazy">
+                </button>
+                <button class="photo-thumb w-full sm:w-[48%] lg:w-[22%]" data-full="assets/Brand Work/Coksa 2.jpg" data-name="Coksa 2">
+                    <img src="assets/Brand Work/Coksa 2.jpg" alt="Coksa 2" loading="lazy">
+                </button>
+                <button class="photo-thumb w-full sm:w-[48%] lg:w-[22%]" data-full="assets/Brand Work/Freefalling 1.jpg" data-name="Freefalling 1">
+                    <img src="assets/Brand Work/Freefalling 1.jpg" alt="Freefalling 1" loading="lazy">
+                </button>
+                <button class="photo-thumb w-full sm:w-[48%] lg:w-[22%]" data-full="assets/Brand Work/Freefalling 2.jpg" data-name="Freefalling 2">
+                    <img src="assets/Brand Work/Freefalling 2.jpg" alt="Freefalling 2" loading="lazy">
+                </button>
+                <button class="photo-thumb w-full sm:w-[48%] lg:w-[22%]" data-full="assets/Brand Work/Hue and Tint 1.jpg" data-name="Hue and Tint 1">
+                    <img src="assets/Brand Work/Hue and Tint 1.jpg" alt="Hue and Tint 1" loading="lazy">
+                </button>
+                <button class="photo-thumb w-full sm:w-[48%] lg:w-[22%]" data-full="assets/Brand Work/Hue and Tint 2.jpg" data-name="Hue and Tint 2">
+                    <img src="assets/Brand Work/Hue and Tint 2.jpg" alt="Hue and Tint 2" loading="lazy">
+                </button>
+                <button class="photo-thumb w-full sm:w-[48%] lg:w-[22%]" data-full="assets/Brand Work/Hue and Tint 3.jpg" data-name="Hue and Tint 3">
+                    <img src="assets/Brand Work/Hue and Tint 3.jpg" alt="Hue and Tint 3" loading="lazy">
+                </button>
+                <button class="photo-thumb w-full sm:w-[48%] lg:w-[22%]" data-full="assets/Brand Work/Hue and Tint 4.jpg" data-name="Hue and Tint 4">
+                    <img src="assets/Brand Work/Hue and Tint 4.jpg" alt="Hue and Tint 4" loading="lazy">
+                </button>
+                <button class="photo-thumb w-full sm:w-[48%] lg:w-[22%]" data-full="assets/Brand Work/Hue and Tint 5.jpg" data-name="Hue and Tint 5">
+                    <img src="assets/Brand Work/Hue and Tint 5.jpg" alt="Hue and Tint 5" loading="lazy">
+                </button>
+                <button class="photo-thumb w-full sm:w-[48%] lg:w-[22%]" data-full="assets/Brand Work/Hue and Tint 6.jpg" data-name="Hue and Tint 6">
+                    <img src="assets/Brand Work/Hue and Tint 6.jpg" alt="Hue and Tint 6" loading="lazy">
+                </button>
+                <button class="photo-thumb w-full sm:w-[48%] lg:w-[22%]" data-full="assets/Brand Work/Maya Jewellery.jpg" data-name="Maya 1">
+                    <img src="assets/Brand Work/Maya Jewellery.jpg" alt="Maya 1" loading="lazy">
+                </button>
+            </div>
+        </section>
+
+        <div class="mt-10 flex justify-center">
+            <a href="index.html#work" class="px-4 py-2 border border-red-500 rounded-full hover:bg-red-500 hover:text-black transition-colors duration-300">
+                &larr; Back to Work
+            </a>
+        </div>
+    </main>
+
+    <div id="photo-lightbox" class="photo-lightbox hidden">
+        <div class="photo-lightbox-backdrop"></div>
+        <img id="photo-lightbox-image" class="photo-lightbox-image" alt="Enlarged photograph">
+    </div>
+
+    <script>
+        window.addEventListener('load', () => {
+            const preloader = document.getElementById('page-preloader');
+            if (!preloader) return;
+
+            setTimeout(() => {
+                preloader.classList.remove('is-active');
+                preloader.style.display = 'none';
+            }, 250);
+        });
+
+        const lightbox = document.getElementById('photo-lightbox');
+        const lightboxImage = document.getElementById('photo-lightbox-image');
+
+        document.querySelectorAll('.photo-thumb').forEach(button => {
+            button.addEventListener('click', () => {
+                const fullSrc = button.getAttribute('data-full');
+                if (!fullSrc) return;
+                lightboxImage.src = fullSrc;
+                lightbox.classList.remove('hidden');
+            });
+        });
+
+        lightbox.addEventListener('click', (event) => {
+            if (event.target === lightbox || event.target.classList.contains('photo-lightbox-backdrop')) {
+                lightbox.classList.add('hidden');
+                lightboxImage.src = '';
+            }
+        });
+
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'Escape' && !lightbox.classList.contains('hidden')) {
+                lightbox.classList.add('hidden');
+                lightboxImage.src = '';
+            }
+        });
+    </script>
+
+</body>
+</html>

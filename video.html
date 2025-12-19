@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CYCLING PLATYPUS - Video Player</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="assets/logo.png">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .video-thumbnail-container {
+            position: relative;
+            width: 100%;
+            max-width: 100%;
+            background: #000;
+            overflow: hidden;
+        }
+        .video-thumbnail-container img {
+            width: 100%;
+            display: block;
+        }
+
+        /* Stills grid under video info */
+        .video-stills-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+        @media (min-width: 768px) {
+            .video-stills-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+        .video-still-box {
+            position: relative;
+            width: 100%;
+            padding-top: 56.25%; /* 16:9 */
+            background: #050505;
+            border: 1px solid #330000;
+            overflow: hidden;
+        }
+        .video-still-box-inner {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #ff3333;
+            font-size: 1.1rem;
+            letter-spacing: 0.15em;
+        }
+    </style>
+</head>
+<body class="bg-black text-red-500 font-pixel flex flex-col items-center justify-center min-h-screen p-4">
+
+    <div id="player" class="video-thumbnail-container w-full max-w-4xl"></div>
+
+    <div id="video-info" class="mt-10 w-full max-w-4xl text-center mx-auto">
+        <h1 id="video-title" class="text-2xl md:text-3xl mb-4"></h1>
+        <p id="video-description" class="text-sm md:text-base leading-relaxed"></p>
+    </div>
+
+    <section class="mt-4 w-full max-w-4xl mx-auto">
+        <div class="video-stills-grid">
+            <div class="video-still-box">
+                <div class="video-still-box-inner">1-1</div>
+            </div>
+            <div class="video-still-box">
+                <div class="video-still-box-inner">2-2</div>
+            </div>
+            <div class="video-still-box">
+                <div class="video-still-box-inner">3-3</div>
+            </div>
+        </div>
+    </section>
+
+    <a href="index.html#work" class="mt-10 px-4 py-2 border border-red-500 rounded-full hover:bg-red-500 hover:text-black transition-colors duration-300">
+        &larr; Back to Work
+    </a>
+
+    <script>
+        // Get video ID and title from URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const videoId = urlParams.get('v');
+        const videoTitle = urlParams.get('title');
+
+        const player = document.getElementById('player');
+
+        if (videoId) {
+            const thumbUrl = videoId === 'm8-ssNj8czg'
+                ? `https://img.youtube.com/vi/${videoId}/0.jpg`
+                : `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`;
+            const watchUrl = `https://www.youtube.com/watch?v=${videoId}`;
+
+            player.innerHTML = `
+                <img src="${thumbUrl}" alt="Video thumbnail" />
+                <div class="mt-6 flex justify-center">
+                    <a href="${watchUrl}" target="_blank" rel="noopener noreferrer" class="px-4 py-2 border border-red-500 rounded-full hover:bg-red-500 hover:text-black transition-colors duration-300">
+                        Watch on YouTube
+                    </a>
+                </div>
+            `;
+        } else {
+            player.innerHTML = '<p>Video not found. Please return to the homepage.</p>';
+        }
+
+        // Set title and placeholder description
+        if (videoTitle) {
+            const heading = document.getElementById('video-title');
+            const description = document.getElementById('video-description');
+            heading.textContent = `The Thought Behind ${decodeURIComponent(videoTitle)}`;
+            description.textContent = 'This is a placeholder for the story and intent behind this piece. You can replace this text with your own description later.';
+        }
+    </script>
+
+</body>
+</html>
