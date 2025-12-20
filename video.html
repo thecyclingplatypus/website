@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -18,6 +19,7 @@
             background: #000;
             overflow: hidden;
         }
+
         .video-thumbnail-container img {
             width: 100%;
             display: block;
@@ -30,19 +32,23 @@
             gap: 1.5rem;
             margin-top: 3rem;
         }
+
         @media (min-width: 768px) {
             .video-stills-grid {
                 grid-template-columns: repeat(2, minmax(0, 1fr));
             }
         }
+
         .video-still-box {
             position: relative;
             width: 100%;
-            padding-top: 56.25%; /* 16:9 */
+            padding-top: 56.25%;
+            /* 16:9 */
             background: #050505;
             border: 1px solid #330000;
             overflow: hidden;
         }
+
         .video-still-box-inner {
             position: absolute;
             inset: 0;
@@ -55,6 +61,7 @@
         }
     </style>
 </head>
+
 <body class="bg-black text-red-500 font-pixel flex flex-col items-center justify-center min-h-screen p-4">
 
     <div id="player" class="video-thumbnail-container w-full max-w-4xl"></div>
@@ -65,28 +72,28 @@
     </div>
 
     <section class="mt-4 w-full max-w-4xl mx-auto">
-        <div class="video-stills-grid">
-            <div class="video-still-box">
-                <div class="video-still-box-inner">1-1</div>
-            </div>
-            <div class="video-still-box">
-                <div class="video-still-box-inner">2-2</div>
-            </div>
-            <div class="video-still-box">
-                <div class="video-still-box-inner">3-3</div>
-            </div>
-        </div>
+        <div id="video-stills-grid" class="video-stills-grid"></div>
     </section>
 
-    <a href="index.html#work" class="mt-10 px-4 py-2 border border-red-500 rounded-full hover:bg-red-500 hover:text-black transition-colors duration-300">
+    <a href="index.html#work"
+        class="mt-10 px-4 py-2 border border-red-500 rounded-full hover:bg-red-500 hover:text-black transition-colors duration-300">
         &larr; Back to Work
     </a>
 
+    <script src="script.js"></script>
     <script>
-        // Get video ID and title from URL
-        const urlParams = new URLSearchParams(window.location.search);
-        const videoId = urlParams.get('v');
-        const videoTitle = urlParams.get('title');
+        const getParam = (name) => {
+            const urlParams = new URLSearchParams(window.location.search);
+            if (urlParams.has(name)) return urlParams.get(name);
+            if (window.location.hash.includes(name + '=')) {
+                const hashParams = new URLSearchParams(window.location.hash.substring(1));
+                return hashParams.get(name);
+            }
+            return null;
+        };
+
+        const videoId = getParam('v');
+        const videoTitle = getParam('title');
 
         const player = document.getElementById('player');
 
@@ -105,17 +112,34 @@
                 </div>
             `;
         } else {
-            player.innerHTML = '<p>Video not found. Please return to the homepage.</p>';
+            player.innerHTML = `<div class="text-center">
+                <p class="text-xl mb-4">Video not found.</p>
+                <a href="index.html" class="inline-block underline hover:text-white">Return to homepage</a>
+            </div>`;
         }
 
-        // Set title and placeholder description
         if (videoTitle) {
-            const heading = document.getElementById('video-title');
-            const description = document.getElementById('video-description');
-            heading.textContent = `The Thought Behind ${decodeURIComponent(videoTitle)}`;
-            description.textContent = 'This is a placeholder for the story and intent behind this piece. You can replace this text with your own description later.';
+            document.getElementById('video-title').textContent = `The Thought Behind ${decodeURIComponent(videoTitle)}`;
+            document.getElementById('video-description').textContent = 'This is the story and intent behind this piece.';
         }
+
+        const videoStillsConfig = {
+            '4SkoB1a7_QQ': [
+                'https://res.cloudinary.com/dw5fixnr1/image/upload/f_auto,q_auto/v1766244892/Katrina_1_llhhuo.webp',
+                'https://res.cloudinary.com/dw5fixnr1/image/upload/f_auto,q_auto/v1766244817/Youna_3_xl3ijq.webp'
+            ],
+            'BnxTo5zSenc': [
+                'https://res.cloudinary.com/dw5fixnr1/image/upload/f_auto,q_auto/v1766244859/Freefalling_1_p4ipfd.webp',
+                'https://res.cloudinary.com/dw5fixnr1/image/upload/f_auto,q_auto/v1766244929/Maya_3_gcxuja.webp'
+            ],
+            'default': [
+            ]
+        };
+
+        const stillsKey = videoStillsConfig[videoId] ? videoId : 'default';
+        initVideoStills('#video-stills-grid', videoStillsConfig, stillsKey);
     </script>
 
 </body>
+
 </html>

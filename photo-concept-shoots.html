@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,6 +12,7 @@
     <link rel="icon" type="image/png" href="assets/logo.png">
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body class="bg-black text-red-500 font-pixel min-h-screen flex flex-col items-center p-4">
 
     <div id="page-preloader" class="is-active">
@@ -26,69 +28,12 @@
         </section>
 
         <section class="mb-12">
-            <div class="flex flex-wrap justify-center gap-6">
-                <button class="photo-thumb w-full sm:w-[80%] lg:w-[45%]" data-full="assets/Concept Shoots/1.jpg" data-name="1">
-                    <img src="assets/Concept Shoots/1.jpg" alt="1" loading="lazy">
-                </button>
-                <button class="photo-thumb w-full sm:w-[80%] lg:w-[45%]" data-full="assets/Concept Shoots/2.jpg" data-name="2">
-                    <img src="assets/Concept Shoots/2.jpg" alt="2" loading="lazy">
-                </button>
-                <button class="photo-thumb w-full sm:w-[80%] lg:w-[45%]" data-full="assets/Concept Shoots/3.jpg" data-name="3">
-                    <img src="assets/Concept Shoots/3.jpg" alt="3" loading="lazy">
-                </button>
-                <button class="photo-thumb w-full sm:w-[80%] lg:w-[45%]" data-full="assets/Concept Shoots/4.jpg" data-name="4">
-                    <img src="assets/Concept Shoots/4.jpg" alt="4" loading="lazy">
-                </button>
-                <button class="photo-thumb w-full sm:w-[48%] lg:w-[22%]" data-full="assets/Concept Shoots/5.jpg" data-name="5">
-                    <img src="assets/Concept Shoots/5.jpg" alt="5" loading="lazy">
-                </button>
-                <button class="photo-thumb w-full sm:w-[48%] lg:w-[22%]" data-full="assets/Concept Shoots/6.jpg" data-name="6">
-                    <img src="assets/Concept Shoots/6.jpg" alt="6" loading="lazy">
-                </button>
-                <button class="photo-thumb w-full sm:w-[48%] lg:w-[22%]" data-full="assets/Concept Shoots/7.jpg" data-name="7">
-                    <img src="assets/Concept Shoots/7.jpg" alt="7" loading="lazy">
-                </button>
-                <button class="photo-thumb w-full sm:w-[48%] lg:w-[22%]" data-full="assets/Concept Shoots/8.jpg" data-name="8">
-                    <img src="assets/Concept Shoots/8.jpg" alt="8" loading="lazy">
-                </button>
-                <button class="photo-thumb w-full sm:w-[48%] lg:w-[22%]" data-full="assets/Concept Shoots/9.jpg" data-name="9">
-                    <img src="assets/Concept Shoots/9.jpg" alt="9" loading="lazy">
-                </button>
-                <button class="photo-thumb w-full sm:w-[48%] lg:w-[22%]" data-full="assets/Concept Shoots/10.jpg" data-name="10">
-                    <img src="assets/Concept Shoots/10.jpg" alt="10" loading="lazy">
-                </button>
-                <button class="photo-thumb w-full sm:w-[48%] lg:w-[22%]" data-full="assets/Concept Shoots/11.jpg" data-name="11">
-                    <img src="assets/Concept Shoots/11.jpg" alt="11" loading="lazy">
-                </button>
-                <button class="photo-thumb w-full sm:w-[48%] lg:w-[22%]" data-full="assets/Concept Shoots/12.jpg" data-name="12">
-                    <img src="assets/Concept Shoots/12.jpg" alt="12" loading="lazy">
-                </button>
-                <button class="photo-thumb w-full sm:w-[48%] lg:w-[22%]" data-full="assets/Concept Shoots/13.jpg" data-name="13">
-                    <img src="assets/Concept Shoots/13.jpg" alt="13" loading="lazy">
-                </button>
-                <button class="photo-thumb w-full sm:w-[48%] lg:w-[22%]" data-full="assets/Concept Shoots/14.jpg" data-name="14">
-                    <img src="assets/Concept Shoots/14.jpg" alt="14" loading="lazy">
-                </button>
-                <button class="photo-thumb w-full sm:w-[48%] lg:w-[22%]" data-full="assets/Concept Shoots/15.jpg" data-name="15">
-                    <img src="assets/Concept Shoots/15.jpg" alt="15" loading="lazy">
-                </button>
-                <button class="photo-thumb w-full sm:w-[48%] lg:w-[22%]" data-full="assets/Concept Shoots/17.jpg" data-name="17">
-                    <img src="assets/Concept Shoots/17.jpg" alt="17" loading="lazy">
-                </button>
-                <button class="photo-thumb w-full sm:w-[48%] lg:w-[22%]" data-full="assets/Concept Shoots/18.jpg" data-name="18">
-                    <img src="assets/Concept Shoots/18.jpg" alt="18" loading="lazy">
-                </button>
-                <button class="photo-thumb w-full sm:w-[48%] lg:w-[22%]" data-full="assets/Concept Shoots/19.jpg" data-name="19">
-                    <img src="assets/Concept Shoots/19.jpg" alt="19" loading="lazy">
-                </button>
-                <button class="photo-thumb w-full sm:w-[48%] lg:w-[22%]" data-full="assets/Concept Shoots/20.jpg" data-name="20">
-                    <img src="assets/Concept Shoots/20.jpg" alt="20" loading="lazy">
-                </button>
-            </div>
+            <div id="gallery-container" class="flex flex-wrap justify-center gap-6"></div>
         </section>
 
         <div class="mt-10 flex justify-center">
-            <a href="index.html#work" class="px-4 py-2 border border-red-500 rounded-full hover:bg-red-500 hover:text-black transition-colors duration-300">
+            <a href="index.html#work"
+                class="px-4 py-2 border border-red-500 rounded-full hover:bg-red-500 hover:text-black transition-colors duration-300">
                 &larr; Back to Work
             </a>
         </div>
@@ -99,43 +44,61 @@
         <img id="photo-lightbox-image" class="photo-lightbox-image" alt="Enlarged photograph">
     </div>
 
+    <script src="script.js"></script>
     <script>
         window.addEventListener('load', () => {
             const preloader = document.getElementById('page-preloader');
-            if (!preloader) return;
-
-            setTimeout(() => {
-                preloader.classList.remove('is-active');
-                preloader.style.display = 'none';
-            }, 250);
+            if (preloader) {
+                setTimeout(() => {
+                    preloader.classList.remove('is-active');
+                    preloader.style.display = 'none';
+                }, 250);
+            }
         });
 
         const lightbox = document.getElementById('photo-lightbox');
         const lightboxImage = document.getElementById('photo-lightbox-image');
 
-        document.querySelectorAll('.photo-thumb').forEach(button => {
-            button.addEventListener('click', () => {
-                const fullSrc = button.getAttribute('data-full');
-                if (!fullSrc) return;
-                lightboxImage.src = fullSrc;
-                lightbox.classList.remove('hidden');
+        if (lightbox) {
+            lightbox.addEventListener('click', (event) => {
+                if (event.target === lightbox || event.target.classList.contains('photo-lightbox-backdrop')) {
+                    lightbox.classList.add('hidden');
+                    lightboxImage.src = '';
+                }
             });
-        });
+            document.addEventListener('keydown', (event) => {
+                if (event.key === 'Escape' && !lightbox.classList.contains('hidden')) {
+                    lightbox.classList.add('hidden');
+                    lightboxImage.src = '';
+                }
+            });
+        }
 
-        lightbox.addEventListener('click', (event) => {
-            if (event.target === lightbox || event.target.classList.contains('photo-lightbox-backdrop')) {
-                lightbox.classList.add('hidden');
-                lightboxImage.src = '';
-            }
-        });
+        const galleryImages = [
+            { full: 'assets/Concept Shoots/1.jpg', name: '1' },
+            { full: 'assets/Concept Shoots/2.jpg', name: '2' },
+            { full: 'assets/Concept Shoots/3.jpg', name: '3' },
+            { full: 'assets/Concept Shoots/4.jpg', name: '4' },
+            { full: 'assets/Concept Shoots/5.jpg', name: '5' },
+            { full: 'assets/Concept Shoots/6.jpg', name: '6' },
+            { full: 'assets/Concept Shoots/7.jpg', name: '7' },
+            { full: 'assets/Concept Shoots/8.jpg', name: '8' },
+            { full: 'assets/Concept Shoots/9.jpg', name: '9' },
+            { full: 'assets/Concept Shoots/10.jpg', name: '10' },
+            { full: 'assets/Concept Shoots/11.jpg', name: '11' },
+            { full: 'assets/Concept Shoots/12.jpg', name: '12' },
+            { full: 'assets/Concept Shoots/13.jpg', name: '13' },
+            { full: 'assets/Concept Shoots/14.jpg', name: '14' },
+            { full: 'assets/Concept Shoots/15.jpg', name: '15' },
+            { full: 'assets/Concept Shoots/17.jpg', name: '17' },
+            { full: 'assets/Concept Shoots/18.jpg', name: '18' },
+            { full: 'assets/Concept Shoots/19.jpg', name: '19' },
+            { full: 'assets/Concept Shoots/20.jpg', name: '20' }
+        ];
 
-        document.addEventListener('keydown', (event) => {
-            if (event.key === 'Escape' && !lightbox.classList.contains('hidden')) {
-                lightbox.classList.add('hidden');
-                lightboxImage.src = '';
-            }
-        });
+        initPhotoGallery('#gallery-container', galleryImages);
     </script>
 
 </body>
+
 </html>

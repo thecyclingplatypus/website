@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,6 +12,7 @@
     <link rel="icon" type="image/png" href="assets/logo.png">
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body class="bg-black text-red-500 font-pixel min-h-screen flex flex-col items-center p-4">
 
     <div id="page-preloader" class="is-active">
@@ -26,53 +28,12 @@
         </section>
 
         <section class="mb-12">
-            <div class="flex flex-wrap justify-center gap-6">
-                <!-- Top row: two centered hero images -->
-                <button class="photo-thumb w-full sm:w-[80%] lg:w-[40%]" data-full="assets/Studio Photography/Bamboosa.png" data-name="Bamboosa">
-                    <img src="assets/Studio Photography/Bamboosa.png" alt="Bamboosa" loading="lazy">
-                </button>
-                <button class="photo-thumb w-full sm:w-[80%] lg:w-[40%]" data-full="assets/Studio Photography/Freakins.png" data-name="Freakins">
-                    <img src="assets/Studio Photography/Freakins.png" alt="Freakins" loading="lazy">
-                </button>
-
-                <!-- Middle rows: smaller grid -->
-                <button class="photo-thumb w-full sm:w-[48%] lg:w-[22%]" data-full="assets/Studio Photography/Maya 1.jpg" data-name="Maya 1">
-                    <img src="assets/Studio Photography/Maya 1.jpg" alt="Maya 1" loading="lazy">
-                </button>
-                <button class="photo-thumb w-full sm:w-[48%] lg:w-[22%]" data-full="assets/Studio Photography/Maya 2.jpg" data-name="Maya 2">
-                    <img src="assets/Studio Photography/Maya 2.jpg" alt="Maya 2" loading="lazy">
-                </button>
-                <button class="photo-thumb w-full sm:w-[48%] lg:w-[22%]" data-full="assets/Studio Photography/Maya 3.jpg" data-name="Maya 3">
-                    <img src="assets/Studio Photography/Maya 3.jpg" alt="Maya 3" loading="lazy">
-                </button>
-                <button class="photo-thumb w-full sm:w-[48%] lg:w-[22%]" data-full="assets/Studio Photography/Maya 4.jpg" data-name="Maya 4">
-                    <img src="assets/Studio Photography/Maya 4.jpg" alt="Maya 4" loading="lazy">
-                </button>
-                <button class="photo-thumb w-full sm:w-[48%] lg:w-[22%]" data-full="assets/Studio Photography/Twolaws 1.jpg" data-name="Twolaws 1">
-                    <img src="assets/Studio Photography/Twolaws 1.jpg" alt="Twolaws 1" loading="lazy">
-                </button>
-                <button class="photo-thumb w-full sm:w-[48%] lg:w-[22%]" data-full="assets/Studio Photography/Twolaws 2.jpg" data-name="Twolaws 2">
-                    <img src="assets/Studio Photography/Twolaws 2.jpg" alt="Twolaws 2" loading="lazy">
-                </button>
-                <button class="photo-thumb w-full sm:w-[48%] lg:w-[22%]" data-full="assets/Studio Photography/Twolaws 5.jpg" data-name="Twolaws 5">
-                    <img src="assets/Studio Photography/Twolaws 5.jpg" alt="Twolaws 5" loading="lazy">
-                </button>
-                <button class="photo-thumb w-full sm:w-[48%] lg:w-[22%]" data-full="assets/Studio Photography/Twolaws 6.jpg" data-name="Twolaws 6">
-                    <img src="assets/Studio Photography/Twolaws 6.jpg" alt="Twolaws 6" loading="lazy">
-                </button>
-
-                <!-- Bottom row: two centered hero images -->
-                <button class="photo-thumb w-full sm:w-[80%] lg:w-[40%]" data-full="assets/Studio Photography/White Kiwi 1.png" data-name="White Kiwi 1">
-                    <img src="assets/Studio Photography/White Kiwi 1.png" alt="White Kiwi 1" loading="lazy">
-                </button>
-                <button class="photo-thumb w-full sm:w-[80%] lg:w-[40%]" data-full="assets/Studio Photography/White Kiwi 2.png" data-name="White Kiwi 2">
-                    <img src="assets/Studio Photography/White Kiwi 2.png" alt="White Kiwi 2" loading="lazy">
-                </button>
-            </div>
+            <div id="gallery-container" class="flex flex-wrap justify-center gap-6"></div>
         </section>
 
         <div class="mt-10 flex justify-center">
-            <a href="index.html#work" class="px-4 py-2 border border-red-500 rounded-full hover:bg-red-500 hover:text-black transition-colors duration-300">
+            <a href="index.html#work"
+                class="px-4 py-2 border border-red-500 rounded-full hover:bg-red-500 hover:text-black transition-colors duration-300">
                 &larr; Back to Work
             </a>
         </div>
@@ -83,43 +44,54 @@
         <img id="photo-lightbox-image" class="photo-lightbox-image" alt="Enlarged photograph">
     </div>
 
+    <script src="script.js"></script>
     <script>
         window.addEventListener('load', () => {
             const preloader = document.getElementById('page-preloader');
-            if (!preloader) return;
-
-            setTimeout(() => {
-                preloader.classList.remove('is-active');
-                preloader.style.display = 'none';
-            }, 250);
+            if (preloader) {
+                setTimeout(() => {
+                    preloader.classList.remove('is-active');
+                    preloader.style.display = 'none';
+                }, 250);
+            }
         });
 
         const lightbox = document.getElementById('photo-lightbox');
         const lightboxImage = document.getElementById('photo-lightbox-image');
 
-        document.querySelectorAll('.photo-thumb').forEach(button => {
-            button.addEventListener('click', () => {
-                const fullSrc = button.getAttribute('data-full');
-                if (!fullSrc) return;
-                lightboxImage.src = fullSrc;
-                lightbox.classList.remove('hidden');
+        if (lightbox) {
+            lightbox.addEventListener('click', (event) => {
+                if (event.target === lightbox || event.target.classList.contains('photo-lightbox-backdrop')) {
+                    lightbox.classList.add('hidden');
+                    lightboxImage.src = '';
+                }
             });
-        });
+            document.addEventListener('keydown', (event) => {
+                if (event.key === 'Escape' && !lightbox.classList.contains('hidden')) {
+                    lightbox.classList.add('hidden');
+                    lightboxImage.src = '';
+                }
+            });
+        }
 
-        lightbox.addEventListener('click', (event) => {
-            if (event.target === lightbox || event.target.classList.contains('photo-lightbox-backdrop')) {
-                lightbox.classList.add('hidden');
-                lightboxImage.src = '';
-            }
-        });
+        const galleryImages = [
+            { full: 'assets/Studio Photography/Bamboosa.png', name: 'Bamboosa' },
+            { full: 'assets/Studio Photography/Freakins.png', name: 'Freakins' },
+            { full: 'assets/Studio Photography/Maya 1.jpg', name: 'Maya 1' },
+            { full: 'assets/Studio Photography/Maya 2.jpg', name: 'Maya 2' },
+            { full: 'assets/Studio Photography/Maya 3.jpg', name: 'Maya 3' },
+            { full: 'assets/Studio Photography/Maya 4.jpg', name: 'Maya 4' },
+            { full: 'assets/Studio Photography/Twolaws 1.jpg', name: 'Twolaws 1' },
+            { full: 'assets/Studio Photography/Twolaws 2.jpg', name: 'Twolaws 2' },
+            { full: 'assets/Studio Photography/Twolaws 5.jpg', name: 'Twolaws 5' },
+            { full: 'assets/Studio Photography/Twolaws 6.jpg', name: 'Twolaws 6' },
+            { full: 'assets/Studio Photography/White Kiwi 1.png', name: 'White Kiwi 1' },
+            { full: 'assets/Studio Photography/White Kiwi 2.png', name: 'White Kiwi 2' }
+        ];
 
-        document.addEventListener('keydown', (event) => {
-            if (event.key === 'Escape' && !lightbox.classList.contains('hidden')) {
-                lightbox.classList.add('hidden');
-                lightboxImage.src = '';
-            }
-        });
+        initPhotoGallery('#gallery-container', galleryImages);
     </script>
 
 </body>
+
 </html>
