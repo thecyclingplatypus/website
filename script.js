@@ -159,16 +159,41 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const heroVideo = document.getElementById('hero-video-element');
     const heroToggle = document.getElementById('hero-video-toggle');
-    if (heroVideo && heroToggle) {
-        heroToggle.addEventListener('click', () => {
-            if (heroVideo.paused) {
-                heroVideo.play();
-                heroToggle.textContent = 'Pause';
-            } else {
-                heroVideo.pause();
-                heroToggle.textContent = 'Play';
+    const playOverlay = document.getElementById('video-play-overlay');
+
+    if (heroVideo && playOverlay) {
+        // Lazy load video on first interaction
+        const loadAndPlayVideo = () => {
+            if (heroVideo.hasAttribute('data-lazy-load')) {
+                // Video hasn't been loaded yet
+                const videoSrc = heroVideo.getAttribute('src');
+                heroVideo.removeAttribute('data-lazy-load');
+                heroVideo.load(); // Force reload with new settings
             }
-        });
+
+            heroVideo.play().then(() => {
+                playOverlay.style.display = 'none';
+                if (heroToggle) heroToggle.style.display = 'block';
+            }).catch(err => {
+                console.error('Video playback failed:', err);
+            });
+        };
+
+        // Click overlay to start video
+        playOverlay.addEventListener('click', loadAndPlayVideo);
+
+        // Toggle button functionality
+        if (heroToggle) {
+            heroToggle.addEventListener('click', () => {
+                if (heroVideo.paused) {
+                    heroVideo.play();
+                    heroToggle.textContent = 'Pause';
+                } else {
+                    heroVideo.pause();
+                    heroToggle.textContent = 'Play';
+                }
+            });
+        }
     }
 });
 
