@@ -47,26 +47,26 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // Page preloader logic (main index page)
-// Visible from the start, then fades away shortly after load
+// Fades away once the initial UI is ready, without waiting for massive background assets
 (function () {
     const preloader = document.getElementById('page-preloader');
     if (!preloader) return;
 
-    window.addEventListener('load', () => {
-        // Keep it on screen for a brief moment so the animation is visible
+    const hidePreloader = () => {
+        if (!preloader.classList.contains('is-active')) return;
+        
+        preloader.classList.remove('is-active');
         setTimeout(() => {
-            if (!preloader.classList.contains('is-active')) {
-                preloader.style.display = 'none';
-                return;
-            }
+            preloader.style.display = 'none';
+        }, 350);
+    };
 
-            preloader.classList.remove('is-active');
-            const cleanup = () => {
-                preloader.style.display = 'none';
-                preloader.removeEventListener('transitionend', cleanup);
-            };
-            preloader.addEventListener('transitionend', cleanup);
-        }, 250);
+    // Hide after 2 seconds regardless, or when window loads
+    const timeout = setTimeout(hidePreloader, 2000);
+
+    window.addEventListener('load', () => {
+        clearTimeout(timeout);
+        hidePreloader();
     });
 })();
 
