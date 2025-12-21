@@ -11,22 +11,55 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 // Platypus animation
 document.addEventListener('DOMContentLoaded', () => {
     const platypus = document.getElementById('platypus-animation');
+    const hero = document.getElementById('hero-video-element');
+
+    const buffer = 8; // small gap below the hero edge
+
+    let minY = 0;
+    let maxY = window.innerHeight - 50; // account for sprite height
 
     let x = Math.random() * (window.innerWidth - 50);
-    let y = Math.random() * (window.innerHeight - 50);
+    let y = minY + Math.random() * (maxY - minY);
     let vx = (Math.random() - 0.5) * 20; // Fast horizontal velocity
     let vy = (Math.random() - 0.5) * 20; // Fast vertical velocity
 
     function animate() {
+        // Recompute vertical bounds on each frame in case of resize/orientation change
+        maxY = window.innerHeight - 50;
+
+        if (hero) {
+            const rect = hero.getBoundingClientRect();
+
+            // If the hero is clearly visible and not occupying almost the whole screen,
+            // keep the platypus entirely below it. When the hero fills the viewport,
+            // fall back to full-window movement to avoid squashing the motion.
+            const heroVisible = rect.bottom > 0 && rect.top < window.innerHeight;
+            const heroOccupiesMostViewport = rect.bottom >= window.innerHeight - 80;
+
+            if (heroVisible && !heroOccupiesMostViewport) {
+                minY = rect.bottom + buffer;
+            } else {
+                // Hero mostly off-screen or taking entire viewport: allow full window
+                minY = 0;
+            }
+        } else {
+            minY = 0;
+        }
+
+        if (maxY <= minY) {
+            maxY = minY + 1;
+        }
+
         // Simple straight-line movement between bounces
         x += vx;
         y += vy;
 
-        // Bounce off the edges
+        // Bounce off the edges horizontally
         if (x <= 0 || x >= window.innerWidth - 50) {
             vx *= -1;
         }
-        if (y <= 0 || y >= window.innerHeight - 50) {
+        // Bounce vertically only within the area below the hero showreel
+        if (y <= minY || y >= maxY) {
             vy *= -1;
         }
 
@@ -164,13 +197,34 @@ document.addEventListener('DOMContentLoaded', () => {
         let currentIndex = 0;
 
         function updateSlider() {
-            const itemsPerView = window.innerWidth >= 768 ? 3 : 1;
+            const isDesktop = window.innerWidth >= 768;
+            const itemsPerView = isDesktop ? 3 : 1;
             const maxIndex = Math.max(0, items.length - itemsPerView);
             if (currentIndex > maxIndex) currentIndex = maxIndex;
             if (currentIndex < 0) currentIndex = 0;
 
-            const itemWidth = inner.firstElementChild.getBoundingClientRect().width + 32; // width + gap approx
-            const offset = -(itemWidth * currentIndex);
+            let step = 0;
+
+            if (isDesktop) {
+                // Desktop/tablet: base step on distance between first two items
+                const first = inner.children[0];
+                const second = inner.children[1];
+
+                if (second) {
+                    const box1 = first.getBoundingClientRect();
+                    const box2 = second.getBoundingClientRect();
+                    step = box2.left - box1.left;
+                } else {
+                    step = first.getBoundingClientRect().width;
+                }
+            } else {
+                // Mobile: move by the exact width of a single card so a
+                // single centered thumbnail is shown each time.
+                const first = inner.children[0];
+                step = first ? first.getBoundingClientRect().width : trackOuter.getBoundingClientRect().width;
+            }
+
+            const offset = -(step * currentIndex);
             inner.style.transform = `translateX(${offset}px)`;
 
             // Show/hide arrows depending on position
@@ -198,6 +252,43 @@ document.addEventListener('DOMContentLoaded', () => {
                 updateSlider();
             });
         }
+
+        // Basic touch-swipe support for mobile/touch devices
+        let touchStartX = 0;
+        let touchStartY = 0;
+        let touchDeltaX = 0;
+
+        const swipeThreshold = 40; // minimum horizontal movement in px to trigger a slide
+
+        inner.addEventListener('touchstart', (event) => {
+            const touch = event.touches[0];
+            touchStartX = touch.clientX;
+            touchStartY = touch.clientY;
+            touchDeltaX = 0;
+        }, { passive: true });
+
+        inner.addEventListener('touchmove', (event) => {
+            const touch = event.touches[0];
+            touchDeltaX = touch.clientX - touchStartX;
+
+            // If the user is swiping mostly horizontally, prevent vertical scroll from hijacking
+            if (Math.abs(touchDeltaX) > Math.abs(touch.clientY - touchStartY)) {
+                event.preventDefault();
+            }
+        }, { passive: false });
+
+        inner.addEventListener('touchend', () => {
+            if (Math.abs(touchDeltaX) < swipeThreshold) return;
+
+            if (touchDeltaX < 0) {
+                // Swipe left -> next slide
+                currentIndex += 1;
+            } else {
+                // Swipe right -> previous slide
+                currentIndex -= 1;
+            }
+            updateSlider();
+        });
 
         window.addEventListener('resize', updateSlider);
         updateSlider();

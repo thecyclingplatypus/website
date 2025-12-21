@@ -8,7 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="icon" type="image/png" href="assets/logo.png">
+    <link rel="icon" type="image/png" href="assets/favicon.png">
     <link rel="stylesheet" href="style.css">
     <style>
         .video-thumbnail-container {
@@ -65,17 +65,7 @@
     </div>
 
     <section class="mt-4 w-full max-w-4xl mx-auto">
-        <div class="video-stills-grid">
-            <div class="video-still-box">
-                <div class="video-still-box-inner">1-1</div>
-            </div>
-            <div class="video-still-box">
-                <div class="video-still-box-inner">2-2</div>
-            </div>
-            <div class="video-still-box">
-                <div class="video-still-box-inner">3-3</div>
-            </div>
-        </div>
+        <div class="video-stills-grid"></div>
     </section>
 
     <a href="index.html#work" class="mt-10 px-4 py-2 border border-red-500 rounded-full hover:bg-red-500 hover:text-black transition-colors duration-300">
@@ -89,6 +79,270 @@
         const videoTitle = urlParams.get('title');
 
         const player = document.getElementById('player');
+        const stillsGrid = document.querySelector('.video-stills-grid');
+
+        // Map each video (by YouTube ID) to its stills folder and files
+        const videoStills = {
+            // Short Films
+            // Anti Literature
+            'CCFbrd5SBK8': {
+                folder: 'assets/Anti Literature/Stills',
+                files: [
+                    'AL_1.2.1.webp', 'AL_1.4.1.webp', 'AL_1.7.1.webp', 'AL_1.8.1.webp',
+                    'AL_1.10.1.webp', 'AL_1.12.1.webp', 'AL_1.13.1.webp', 'AL_1.16.1.webp',
+                    'AL_1.22.1.webp', 'AL_1.24.1.webp', 'AL_1.25.1.webp', 'AL_1.26.1.webp',
+                    'AL_1.27.1.webp', 'AL_1.31.1.webp', 'AL_1.32.1.webp', 'AL_1.33.1.webp',
+                    'AL_1.35.1.webp', 'AL_1.36.1.webp', 'AL_1.38.1.webp', 'AL_2.4.1.webp',
+                    'AL_2.5.1.webp', 'AL_2.10.1.webp'
+                ]
+            },
+            // Beauty of Tiruvannamalai
+            'Czf4TMDl_lA': {
+                folder: 'assets/Beauty Of Tiruvannamalai/Stills',
+                files: [
+                    'Still 2025-12-12 031409_1.1.1.webp',
+                    'Still 2025-12-12 031409_1.1.3.webp',
+                    'Still 2025-12-12 031409_1.1.6.webp',
+                    'Still 2025-12-12 031409_1.1.7.webp',
+                    'Still 2025-12-12 031409_1.1.8.webp',
+                    'Still 2025-12-12 031409_1.1.10.webp',
+                    'Still 2025-12-12 031409_1.1.11.webp',
+                    'Still 2025-12-12 031409_1.1.13.webp',
+                    'Still 2025-12-12 031409_1.1.14.webp',
+                    'Still 2025-12-12 031409_1.1.17.webp',
+                    'Still 2025-12-12 031409_1.1.18.webp',
+                    'Still 2025-12-12 031409_1.1.19.webp',
+                    'Still 2025-12-12 031409_1.1.20.webp',
+                    'Still 2025-12-12 031409_1.1.21.webp',
+                    'Still 2025-12-12 031409_1.1.22.webp',
+                    'Still 2025-12-12 031409_1.1.25.webp',
+                    'Still 2025-12-12 031409_1.1.26.webp'
+                ]
+            },
+            // Demons Unconsciousness
+            'fu9AIWiGAF4': {
+                folder: 'assets/Demons unconscious/Stills',
+                files: [
+                    'Still 2025-12-12 030200_1.1.1.webp',
+                    'Still 2025-12-12 030200_1.1.2.webp',
+                    'Still 2025-12-12 030200_1.1.3.webp',
+                    'Still 2025-12-12 030200_1.1.5.webp',
+                    'Still 2025-12-12 030200_1.1.6.webp',
+                    'Still 2025-12-12 030200_1.1.7.webp',
+                    'Still 2025-12-12 030200_1.1.8.webp',
+                    'Still 2025-12-12 030200_1.1.9.webp',
+                    'Still 2025-12-12 030200_1.1.10.webp',
+                    'Still 2025-12-12 030200_1.1.11.webp',
+                    'Still 2025-12-12 030200_1.1.12.webp',
+                    'Still 2025-12-12 030200_1.1.13.webp'
+                ]
+            },
+            // The Greatest Movie Of All Time
+            '4MNF7M8aPVI': {
+                folder: 'assets/The Greatest Movie Of All Time/Stills',
+                files: [
+                    'Still 2025-12-12 175630_1.9.2.webp',
+                    'Still 2025-12-12 175630_1.9.3.webp',
+                    'Still 2025-12-12 175630_1.9.4.webp',
+                    'Still 2025-12-12 175630_1.9.5.webp',
+                    'Still 2025-12-12 175630_1.9.6.webp',
+                    'Still 2025-12-12 175630_1.9.7.webp',
+                    'Still 2025-12-12 175630_1.9.8.webp',
+                    'Still 2025-12-12 175630_1.9.9.webp',
+                    'Still 2025-12-12 175630_1.9.10.webp',
+                    'Still 2025-12-12 175630_1.9.11.webp',
+                    'Still 2025-12-12 175752_1.9.8.webp'
+                ]
+            },
+            // Fashion Film
+            'NSF8LbZScAQ': {
+                folder: 'assets/Fashion Film/Stills',
+                files: [
+                    'Still 2025-12-12 175131_1.10.1.webp',
+                    'Still 2025-12-12 175131_1.10.2.webp',
+                    'Still 2025-12-12 175131_1.10.3.webp',
+                    'Still 2025-12-12 175131_1.10.4.webp',
+                    'Still 2025-12-12 175131_1.10.5.webp',
+                    'Still 2025-12-12 175131_1.10.6.webp',
+                    'Still 2025-12-12 175131_1.10.7.webp',
+                    'Still 2025-12-12 175131_1.10.8.webp',
+                    'Still 2025-12-12 175131_1.10.9.webp',
+                    'Still 2025-12-12 175131_1.10.10.webp',
+                    'Still 2025-12-12 175131_1.10.11.webp',
+                    'Still 2025-12-12 175131_1.10.12.webp',
+                    'Still 2025-12-12 175131_1.10.13.webp',
+                    'Still 2025-12-12 175131_1.10.14.webp',
+                    'Still 2025-12-12 175131_1.10.15.webp',
+                    'Still 2025-12-12 175131_1.10.16.webp',
+                    'Still 2025-12-12 175131_1.10.17.webp',
+                    'Still 2025-12-12 175131_1.10.18.webp',
+                    'Still 2025-12-12 175131_1.10.19.webp'
+                ]
+            },
+
+            // Brand Films (landscape)
+            // Google Ad - Behind the Scenes
+            '4SkoB1a7_QQ': {
+                folder: 'assets/Google Ad/Stills',
+                files: [
+                    'Still 2025-12-12 180019_1.1.2.webp',
+                    'Still 2025-12-12 180019_1.1.3.webp',
+                    'Still 2025-12-12 180019_1.1.4.webp',
+                    'Still 2025-12-12 180019_1.1.6.webp',
+                    'Still 2025-12-12 180019_1.1.9.webp',
+                    'Still 2025-12-12 180019_1.1.10.webp',
+                    'Still 2025-12-12 180019_1.1.11.webp',
+                    'Still 2025-12-12 180019_1.1.12.webp',
+                    'Still 2025-12-12 180019_1.1.13.webp',
+                    'Still 2025-12-12 180019_1.1.14.webp',
+                    'Still 2025-12-12 180019_1.1.15.webp'
+                ]
+            },
+            // Hattke Food (New Launch Commercial)
+            'BnxTo5zSenc': {
+                folder: 'assets/Hattke Food/Stills',
+                files: [
+                    'Still 2025-12-17 210650_1.6.1.webp',
+                    'Still 2025-12-17 210650_1.6.2.webp',
+                    'Still 2025-12-17 210650_1.6.3.webp',
+                    'Still 2025-12-17 210650_1.6.4.webp',
+                    'Still 2025-12-17 210650_1.6.5.webp',
+                    'Still 2025-12-17 210650_1.6.6.webp',
+                    'Still 2025-12-17 210650_1.6.7.webp',
+                    'Still 2025-12-17 210650_1.6.8.webp',
+                    'Still 2025-12-17 210650_1.6.9.webp',
+                    'Still 2025-12-17 210650_1.6.10.webp',
+                    'Still 2025-12-17 210650_1.6.11.webp',
+                    'Still 2025-12-17 210650_1.6.12.webp',
+                    'Still 2025-12-17 210650_1.6.13.webp',
+                    'Still 2025-12-17 210650_1.6.14.webp',
+                    'Still 2025-12-17 210650_1.6.15.webp'
+                ]
+            },
+            // Spotify - Behind the Scenes
+            'B8Ukl618SSI': {
+                folder: 'assets/Spotify - Behind the scenes/Stills',
+                files: [
+                    'Still 2025-12-20 213604_1.2.1.webp',
+                    'Still 2025-12-20 213604_1.2.2.webp',
+                    'Still 2025-12-20 213604_1.2.3.webp',
+                    'Still 2025-12-20 213604_1.2.4.webp',
+                    'Still 2025-12-20 213604_1.2.5.webp',
+                    'Still 2025-12-20 213604_1.2.6.webp',
+                    'Still 2025-12-20 213604_1.2.7.webp'
+                ]
+            },
+            // Spotify (BTS) ft. Boman Irani
+            'SZqlZ3ROP3s': {
+                folder: 'assets/Spotify BTS ft. Boman Irani/Stills',
+                files: [
+                    'Still 2025-12-20 213230_1.1.1.webp',
+                    'Still 2025-12-20 213230_1.1.2.webp',
+                    'Still 2025-12-20 213230_1.1.3.webp',
+                    'Still 2025-12-20 213230_1.1.4.webp',
+                    'Still 2025-12-20 213230_1.1.5.webp',
+                    'Still 2025-12-20 213230_1.1.6.webp',
+                    'Still 2025-12-20 213230_1.1.7.webp',
+                    'Still 2025-12-20 213230_1.1.8.webp',
+                    'Still 2025-12-20 213230_1.1.9.webp',
+                    'Still 2025-12-20 213230_1.1.10.webp',
+                    'Still 2025-12-20 213230_1.1.11.webp',
+                    'Still 2025-12-20 213230_1.1.12.webp',
+                    'Still 2025-12-20 213230_1.1.13.webp',
+                    'Still 2025-12-20 213230_1.1.14.webp',
+                    'Still 2025-12-20 213230_1.1.15.webp',
+                    'Still 2025-12-20 213230_1.1.16.webp'
+                ]
+            },
+
+            // Music Videos / Aftermovies
+            // Raahey MV
+            'gvwcvpDzijg': {
+                folder: 'assets/Raahey/Stills',
+                files: [
+                    'Still 2025-12-12 182009_1.4.1.webp',
+                    'Still 2025-12-12 182009_1.4.2.webp',
+                    'Still 2025-12-12 182009_1.4.3.webp',
+                    'Still 2025-12-12 182009_1.4.4.webp',
+                    'Still 2025-12-12 182009_1.4.6.webp',
+                    'Still 2025-12-12 182009_1.4.7.webp',
+                    'Still 2025-12-12 182009_1.4.10.webp',
+                    'Still 2025-12-12 182009_1.4.12.webp',
+                    'Still 2025-12-12 182009_1.4.13.webp',
+                    'Still 2025-12-12 182009_1.4.14.webp',
+                    'Still 2025-12-12 182009_1.4.15.webp',
+                    'Still 2025-12-12 182009_1.4.17.webp',
+                    'Still 2025-12-12 182009_1.4.18.webp',
+                    'Still 2025-12-12 182009_1.4.19.webp',
+                    'Still 2025-12-12 182009_1.4.21.webp',
+                    'Still 2025-12-12 182009_1.4.22.webp',
+                    'Still 2025-12-12 182009_1.4.23.webp',
+                    'Still 2025-12-12 182009_1.4.25.webp',
+                    'Still 2025-12-12 182009_1.4.26.webp',
+                    'Still 2025-12-12 182009_1.4.28.webp',
+                    'Still 2025-12-12 182009_1.4.29.webp',
+                    'Still 2025-12-12 182009_1.4.30.webp'
+                ]
+            },
+            // Harley's Halloween (Cinematic Blender Animation)
+            '6G8IlQeztl0': {
+                folder: "assets/Harleys' Halloween/Stills",
+                files: [
+                    'Still 2025-12-12 121843_1.12.2.webp',
+                    'Still 2025-12-12 121843_1.12.4.webp',
+                    'Still 2025-12-12 121843_1.12.6.webp',
+                    'Still 2025-12-12 121843_1.12.7.webp',
+                    'Still 2025-12-12 121843_1.12.9.webp',
+                    'Still 2025-12-12 121843_1.12.10.webp',
+                    'Still 2025-12-12 121843_1.12.12.webp',
+                    'Still 2025-12-12 181143_1.1.3.webp',
+                    'Still 2025-12-12 181202_1.1.12.webp'
+                ]
+            },
+            // HUNGAMA MV
+            'cGbV-a_JmEk': {
+                folder: 'assets/Hungama/Stills',
+                files: [
+                    'Still 2025-12-20 212500_1.1.1.webp',
+                    'Still 2025-12-20 212500_1.1.2.webp',
+                    'Still 2025-12-20 212500_1.1.3.webp',
+                    'Still 2025-12-20 212500_1.1.4.webp',
+                    'Still 2025-12-20 212500_1.1.5.webp',
+                    'Still 2025-12-20 212500_1.1.6.webp',
+                    'Still 2025-12-20 212500_1.1.7.webp'
+                ]
+            },
+            // Kampai Music (Cinematic Aftermovie)
+            'm8-ssNj8czg': {
+                folder: 'assets/Kampai Music/Stills',
+                files: [
+                    'Still 2025-12-20 212814_1.1.1.webp',
+                    'Still 2025-12-20 212814_1.1.2.webp',
+                    'Still 2025-12-20 212814_1.1.3.webp',
+                    'Still 2025-12-20 212814_1.1.4.webp',
+                    'Still 2025-12-20 212814_1.1.5.webp',
+                    'Still 2025-12-20 212814_1.1.6.webp',
+                    'Still 2025-12-20 212814_1.1.7.webp',
+                    'Still 2025-12-20 212814_1.1.8.webp'
+                ]
+            },
+            // Skylights Ensemble (Cinematic Aftermovie)
+            'U38lSFbQACg': {
+                folder: 'assets/Skylights Music/Stills',
+                files: [
+                    'Still 2025-12-20 214020_1.3.1.webp',
+                    'Still 2025-12-20 214020_1.3.2.webp',
+                    'Still 2025-12-20 214020_1.3.3.webp',
+                    'Still 2025-12-20 214020_1.3.5.webp',
+                    'Still 2025-12-20 214020_1.3.6.webp',
+                    'Still 2025-12-20 214020_1.3.7.webp',
+                    'Still 2025-12-20 214020_1.3.8.webp',
+                    'Still 2025-12-20 214020_1.3.9.webp',
+                    'Still 2025-12-20 214020_1.3.10.webp',
+                    'Still 2025-12-20 214020_1.3.11.webp'
+                ]
+            }
+        };
 
         if (videoId) {
             const thumbUrl = videoId === 'm8-ssNj8czg'
@@ -108,12 +362,55 @@
             player.innerHTML = '<p>Video not found. Please return to the homepage.</p>';
         }
 
-        // Set title and placeholder description
+        // Set title only – no "Thought Behind" or description block
         if (videoTitle) {
             const heading = document.getElementById('video-title');
-            const description = document.getElementById('video-description');
-            heading.textContent = `The Thought Behind ${decodeURIComponent(videoTitle)}`;
-            description.textContent = 'This is a placeholder for the story and intent behind this piece. You can replace this text with your own description later.';
+            const decodedTitle = decodeURIComponent(videoTitle);
+
+            // Clean helper markers like "(first line)" / "(second line)" from the title param
+            const cleanedTitle = decodedTitle
+                .replace(' (first line)', '')
+                .replace(' (second line)', '');
+
+            heading.textContent = cleanedTitle;
+        }
+
+        // Hide stills grid for portrait videos only. These are the IDs used
+        // in the "portrait" thumbnails in the Work section (e.g. Charles & Keith, ERBE Studio).
+        const portraitVideoIds = [
+            '1V8awvvflyU', // Charles & Keith (Spring Campaign)
+            'utSLOMNFJAc', // ERBE Studio (Opening Film)
+            'G80pn-vjoYQ', // ERBE Studio (ASMR Film)
+            '_sKVguEfVGo', // Fourfigr (New Launch Film)
+            'MSj_TzOaW9c'  // DGTL 2023 Jagermeister (Cinematic Aftermovie)
+        ];
+
+        if (videoId && stillsGrid) {
+            const stillsSection = stillsGrid.closest('section') || stillsGrid;
+
+            if (portraitVideoIds.includes(videoId)) {
+                // Portrait pieces: hide stills entirely
+                stillsSection.style.display = 'none';
+            } else {
+                // Landscape pieces: render stills if we have them
+                const config = videoStills[videoId];
+
+                if (!config || !config.files || !config.files.length) {
+                    // No configured stills yet – leave placeholders hidden but keep layout
+                    stillsGrid.innerHTML = '';
+                } else {
+                    const boxesHtml = config.files.map((file, index) => {
+                        const src = `${config.folder}/${file}`;
+                        return `
+                            <div class="video-still-box">
+                                <img src="${src}" alt="Still ${index + 1}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" loading="lazy" />
+                            </div>
+                        `;
+                    }).join('');
+
+                    stillsGrid.innerHTML = boxesHtml;
+                }
+            }
         }
     </script>
 
