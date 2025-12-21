@@ -20,8 +20,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let x = Math.random() * (window.innerWidth - 50);
     let y = minY + Math.random() * (maxY - minY);
-    let vx = (Math.random() - 0.5) * 20; // Fast horizontal velocity
-    let vy = (Math.random() - 0.5) * 20; // Fast vertical velocity
+    // Slightly slower, smoother velocities so the motion glides instead of shaking
+    let vx = (Math.random() - 0.5) * 8;  // horizontal velocity
+    let vy = (Math.random() - 0.5) * 6;  // vertical velocity
 
     function animate() {
         // Recompute vertical bounds on each frame in case of resize/orientation change
