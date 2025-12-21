@@ -21,8 +21,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let x = (window.innerWidth - spriteSize) / 2;
     let y = (window.innerHeight - spriteSize) / 2;
-    let vx = (Math.random() - 0.5) * 4;  // gentle horizontal velocity
-    let vy = (Math.random() - 0.5) * 3;  // gentle vertical velocity
+    // Fast, arcade-like motion across the whole screen
+    let vx = (Math.random() - 0.5) * 20;  // horizontal velocity
+    let vy = (Math.random() - 0.5) * 20;  // vertical velocity
 
     function animate() {
         const maxX = window.innerWidth - spriteSize;
