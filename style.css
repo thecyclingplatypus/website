@@ -478,12 +478,13 @@ body {
 
   .film-row-slider {
     align-items: center;
-    gap: 0.5rem;
+    gap: 0.5rem;  
   }
 
-  /* Center single thumbnails in the viewport on mobile */
+  /* Left-align the inner track so JS translateX control shows
+     exactly one card at a time without half-cut thumbnails */
   .film-row-track-inner {
-    justify-content: center;
+    justify-content: flex-start;
   }
 
   .film-row-track-inner .film-item {
