@@ -11,56 +11,33 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 // Platypus animation
 document.addEventListener('DOMContentLoaded', () => {
     const platypus = document.getElementById('platypus-animation');
-    const hero = document.getElementById('hero-video-element');
+    if (!platypus) return;
 
-    const buffer = 8; // small gap below the hero edge
+    // Let the platypus roam the entire viewport like a game sprite.
+    // Keep speeds low so the motion feels smooth and not jittery,
+    // especially on mobile where frame rates may vary.
 
-    let minY = 0;
-    let maxY = window.innerHeight - 50; // account for sprite height
+    const spriteSize = 64; // approx width/height used in CSS
 
-    let x = Math.random() * (window.innerWidth - 50);
-    let y = minY + Math.random() * (maxY - minY);
-    // Slightly slower, smoother velocities so the motion glides instead of shaking
-    let vx = (Math.random() - 0.5) * 8;  // horizontal velocity
-    let vy = (Math.random() - 0.5) * 6;  // vertical velocity
+    let x = (window.innerWidth - spriteSize) / 2;
+    let y = (window.innerHeight - spriteSize) / 2;
+    let vx = (Math.random() - 0.5) * 4;  // gentle horizontal velocity
+    let vy = (Math.random() - 0.5) * 3;  // gentle vertical velocity
 
     function animate() {
-        // Recompute vertical bounds on each frame in case of resize/orientation change
-        maxY = window.innerHeight - 50;
-
-        if (hero) {
-            const rect = hero.getBoundingClientRect();
-
-            // If the hero is clearly visible and not occupying almost the whole screen,
-            // keep the platypus entirely below it. When the hero fills the viewport,
-            // fall back to full-window movement to avoid squashing the motion.
-            const heroVisible = rect.bottom > 0 && rect.top < window.innerHeight;
-            const heroOccupiesMostViewport = rect.bottom >= window.innerHeight - 80;
-
-            if (heroVisible && !heroOccupiesMostViewport) {
-                minY = rect.bottom + buffer;
-            } else {
-                // Hero mostly off-screen or taking entire viewport: allow full window
-                minY = 0;
-            }
-        } else {
-            minY = 0;
-        }
-
-        if (maxY <= minY) {
-            maxY = minY + 1;
-        }
+        const maxX = window.innerWidth - spriteSize;
+        const maxY = window.innerHeight - spriteSize;
 
         // Simple straight-line movement between bounces
         x += vx;
         y += vy;
 
         // Bounce off the edges horizontally
-        if (x <= 0 || x >= window.innerWidth - 50) {
+        if (x <= 0 || x >= maxX) {
             vx *= -1;
         }
-        // Bounce vertically only within the area below the hero showreel
-        if (y <= minY || y >= maxY) {
+        // Bounce vertically within the full window height
+        if (y <= 0 || y >= maxY) {
             vy *= -1;
         }
 
