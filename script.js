@@ -182,7 +182,11 @@ document.addEventListener('DOMContentLoaded', () => {
             if (currentIndex > maxIndex) currentIndex = maxIndex;
             if (currentIndex < 0) currentIndex = 0;
 
+            // Reset transform so measurements are in the natural layout
+            inner.style.transform = 'translateX(0px)';
+
             let step = 0;
+            let offset = 0;
 
             if (isDesktop) {
                 // Desktop/tablet: base step on distance between first two items
@@ -196,14 +200,28 @@ document.addEventListener('DOMContentLoaded', () => {
                 } else {
                     step = first.getBoundingClientRect().width;
                 }
+
+                offset = -(step * currentIndex);
             } else {
-                // Mobile: move by the exact width of a single card so a
-                // single centered thumbnail is shown each time.
-                const first = inner.children[0];
-                step = first ? first.getBoundingClientRect().width : trackOuter.getBoundingClientRect().width;
+                // Mobile: align the *center* of the active card with the center of the viewport
+                // so thumbnails visually line up with the large section titles.
+                const activeItem = items[currentIndex];
+                const trackBox = trackOuter.getBoundingClientRect();
+
+                if (activeItem && trackBox.width > 0) {
+                    const itemBox = activeItem.getBoundingClientRect();
+
+                    const viewportCenter = window.innerWidth / 2;
+                    const itemCenter = itemBox.left + itemBox.width / 2;
+
+                    offset = -(itemCenter - viewportCenter);
+                } else {
+                    // Fallback: simple full-width steps
+                    step = trackBox.width || 0;
+                    offset = -(step * currentIndex);
+                }
             }
 
-            const offset = -(step * currentIndex);
             inner.style.transform = `translateX(${offset}px)`;
 
             // Show/hide arrows depending on position
